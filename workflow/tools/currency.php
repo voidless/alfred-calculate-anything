@@ -478,7 +478,7 @@ class Currency extends CalculateAnything implements CalculatorInterface
             $exchange = $this->getRates();
         }
 
-        if (isset($exchange['error'])) {
+        if (isset($exchange['error']) || isset($exchange['message'])) {
             return [
                 'total' => '',
                 'single' => '',
@@ -657,7 +657,7 @@ class Currency extends CalculateAnything implements CalculatorInterface
                 // Only return cached rates if cache
                 // has not expired otherwise continue
                 // to fetch the new rates
-                if (!$rates['error'] && $time < $cache_seconds) {
+                if (!isset($rates['error']) && $time < $cache_seconds) {
                     self::$rates = $rates;
                     return $rates;
                 }
@@ -681,7 +681,7 @@ class Currency extends CalculateAnything implements CalculatorInterface
 
         $rates = $this->doRequest($from, $http_headers);
 
-        if (isset($rates['error'])) {
+        if (isset($rates['error']) || isset($rates['message'])) {
             return [
                 'error' => $rates['message']
             ];

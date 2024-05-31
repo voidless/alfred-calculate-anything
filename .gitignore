@@ -92,3 +92,6 @@ assets/update.afphoto
 *.lock
 tests.txt
 .ddev/config.yaml
+
+# Alfred prefs
+prefs.plist

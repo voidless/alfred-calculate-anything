@@ -54,6 +54,7 @@ class CalculateAnything
         'timezone',
         'base_currencies',
         'apikey_openexchangerate',
+        'apikey_openexchangerates',
         'apikey_coinmarket',
         'currency_decimals',
         'crypto_decimals',
@@ -418,6 +419,9 @@ class CalculateAnything
             if (!empty($new_settings['base_currencies'])) {
                 $settings['base_currency'] = str_replace(' ', '', $new_settings['base_currencies']);
                 $settings['base_currency'] = explode(',', $settings['base_currency']);
+            }
+            if (!empty($new_settings['apikey_openexchangerates'])) {
+                $settings['openexchangerate_apikey'] = $new_settings['apikey_openexchangerates'];
             }
             if (!empty($new_settings['apikey_openexchangerate'])) {
                 $settings['openexchangerate_apikey'] = $new_settings['apikey_openexchangerate'];
